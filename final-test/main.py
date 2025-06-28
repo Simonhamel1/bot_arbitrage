@@ -14,6 +14,16 @@ def main():
     print("🚀 Backtesting Stratégie Straddle - BTC/USDT")
     print("=" * 50)
     
+    # Afficher la configuration actuelle
+    if USE_DATE_RANGE:
+        print(f"📅 Période d'analyse: {START_DATE} → {END_DATE}")
+    else:
+        print(f"📅 Analyse des {DAYS_OF_DATA} derniers jours")
+    
+    print(f"🎯 Seuil volatilité: {VOLATILITY_THRESHOLD}e percentile")
+    print(f"💰 Capital initial: ${INITIAL_CAPITAL:,}")
+    print("-" * 50)
+    
     # Créer le dossier de sortie
     os.makedirs("output", exist_ok=True)
     
@@ -26,7 +36,7 @@ def main():
         print("❌ Erreur lors du chargement des données")
         return
     
-    print(f"✅ {len(df)} bougies chargées")
+    print(f"✅ {len(df)} bougies chargées ({df.index[0].strftime('%Y-%m-%d')} → {df.index[-1].strftime('%Y-%m-%d')})")
     
     # 2. Détection des signaux de trading
     print("🎯 Détection des signaux...")

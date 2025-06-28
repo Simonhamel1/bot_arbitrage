@@ -97,3 +97,4 @@ def print_simple_results(results):
         print(f"💥 Pire Trade: {worst_trade:.2f}%")
     
     print("="*60)
+    
