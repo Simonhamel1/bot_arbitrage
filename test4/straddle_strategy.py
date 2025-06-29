@@ -1,23 +1,90 @@
-# Stratégie de straddle simple pour BTC
+# Stratégie Straddle Avancée avec Gestion Long/Short
 
 import pandas as pd
 import numpy as np
+from datetime import datetime, timedelta
+import warnings
+warnings.filterwarnings('ignore')
+
 from config import *
 
-class StraddleStrategy:
-    """Stratégie de straddle simplifiée"""
+class AdvancedStraddleStrategy:
+    """
+    Stratégie straddle avancée avec :
+    - Gestion des positions longues/courtes pour limiter les pertes
+    - Risque maximum = prime d'exercice 
+    - Optimisation de la rentabilité
+    """
     
     def __init__(self):
-        self.trades = []
+        self.positions = []  # Positions ouvertes
+        self.trades_history = []  # Historique des trades
+        self.capital = INITIAL_CAPITAL
+        self.max_risk_per_trade = INITIAL_CAPITAL * RISK_PER_TRADE
         
-    def detect_signals(self, df):
+    def simulate_straddle_price(self, spot_price, strike, volatility, time_to_expiry, interest_rate=0.02):
         """
-        Détecte les signaux de straddle simples
+        Simule le prix d'un straddle (call + put) selon Black-Scholes simplifié
         
         Args:
-            df: DataFrame avec les données et indicateurs
+            spot_price: Prix actuel du sous-jacent
+            strike: Prix d'exercice
+            volatility: Volatilité implicite
+            time_to_expiry: Temps jusqu'à expiration (en années)
+            interest_rate: Taux d'intérêt sans risque
             
         Returns:
+            dict: Prix du call, put et straddle total
+        """
+        if time_to_expiry <= 0:
+            # À l'expiration, valeur intrinsèque seulement
+            call_value = max(0, spot_price - strike)
+            put_value = max(0, strike - spot_price)
+            return {
+                'call_price': call_value,
+                'put_price': put_value,
+                'straddle_price': call_value + put_value,
+                'time_value': 0
+            }
+        
+        # Calcul Black-Scholes simplifié
+        d1 = (np.log(spot_price / strike) + (interest_rate + 0.5 * volatility**2) * time_to_expiry) / (volatility * np.sqrt(time_to_expiry))
+        d2 = d1 - volatility * np.sqrt(time_to_expiry)
+        
+        # Fonction de répartition normale
+        def norm_cdf(x):
+            return 0.5 * (1 + np.sign(x) * np.sqrt(1 - np.exp(-2 * x**2 / np.pi)))
+        
+        # Prix du call
+        call_price = spot_price * norm_cdf(d1) - strike * np.exp(-interest_rate * time_to_expiry) * norm_cdf(d2)
+        
+        # Prix du put (parité call-put)
+        put_price = call_price - spot_price + strike * np.exp(-interest_rate * time_to_expiry)
+        
+        straddle_price = call_price + put_price
+        intrinsic_value = max(0, abs(spot_price - strike))
+        time_value = straddle_price - intrinsic_value
+        
+        return {
+            'call_price': max(0.01, call_price),  # Prix minimum pour éviter 0
+            'put_price': max(0.01, put_price),
+            'straddle_price': max(0.02, straddle_price),
+            'time_value': max(0, time_value),
+            'intrinsic_value': intrinsic_value
+        }
+    
+    def calculate_position_size(self, straddle_price):
+        """
+        Calcule la taille de position basée sur le risque maximal
+        Le risque maximum = prime payée pour le straddle
+        """
+        max_loss = straddle_price  # Perte max = prime payée
+        
+        # Nombre de contrats basé sur le risque par trade
+        contracts = int(self.max_risk_per_trade / max_loss)
+        contracts = max(1, min(contracts, 10))  # Entre 1 et 10 contrats
+        
+        return contracts
             DataFrame avec signaux ajoutés
         """
         signals = df.copy()

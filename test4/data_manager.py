@@ -74,11 +74,6 @@ class DataManager:
             if USE_DATE_RANGE:
                 df = df[(df.index >= START_DATE) & (df.index < END_DATE)]
             
-            # Conversion en DataFrame
-            df = pd.DataFrame(data, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
-            df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
-            df.set_index('timestamp', inplace=True)
-            
             # Calcul des indicateurs simples
             df = self._add_indicators(df)
             

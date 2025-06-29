@@ -1,0 +1,98 @@
+# Requirements pour le Bot de Trading Straddle
+# Version optimisée pour production
+
+# =====================================
+# DÉPENDANCES PRINCIPALES
+# =====================================
+
+# Trading et données financières
+ccxt>=4.0.0                 # Interface exchanges crypto
+pandas>=2.0.0               # Manipulation de données
+numpy>=1.24.0               # Calculs numériques
+
+# Analyse technique
+# TA-Lib>=0.4.0              # Indicateurs techniques (remplacé par pandas/numpy)
+scipy>=1.10.0              # Calculs scientifiques
+
+# Visualisation
+matplotlib>=3.6.0          # Graphiques de base
+seaborn>=0.12.0           # Graphiques statistiques avancés
+plotly>=5.15.0            # Graphiques interactifs (optionnel)
+
+# =====================================
+# UTILITAIRES ET PERFORMANCE
+# =====================================
+
+# Gestion des dates et temps
+python-dateutil>=2.8.0    # Parsing de dates
+pytz>=2023.3              # Timezones
+
+# Performance et optimisation
+numba>=0.57.0             # Compilation JIT (optionnel)
+cython>=0.29.0            # Optimisation C (optionnel)
+
+# =====================================
+# LOGGING ET MONITORING
+# =====================================
+
+# Logging avancé
+coloredlogs>=15.0         # Logs colorés
+loguru>=0.7.0             # Logging moderne (optionnel)
+
+# =====================================
+# DÉVELOPPEMENT ET TESTS
+# =====================================
+
+# Tests unitaires
+pytest>=7.0.0            # Framework de tests
+pytest-cov>=4.0.0        # Coverage des tests
+pytest-mock>=3.10.0      # Mocking pour tests
+
+# Qualité du code
+black>=23.0.0             # Formatage automatique
+flake8>=6.0.0             # Linting
+mypy>=1.0.0               # Type checking
+
+# =====================================
+# DÉPLOIEMENT ET PRODUCTION
+# =====================================
+
+# Configuration
+python-dotenv>=1.0.0      # Variables d'environnement
+pydantic>=2.0.0           # Validation de données (optionnel)
+
+# Monitoring
+psutil>=5.9.0             # Monitoring système
+memory-profiler>=0.60.0   # Profiling mémoire (dev)
+
+# =====================================
+# COMPATIBILITÉ
+# =====================================
+
+# Version Python recommandée: 3.9+
+# Testé sur: Python 3.9, 3.10, 3.11
+
+# =====================================
+# INSTALLATION RAPIDE
+# =====================================
+
+# Installation des dépendances essentielles:
+# pip install ccxt pandas numpy matplotlib seaborn scipy
+
+# Installation complète:
+# pip install -r requirements.txt
+
+# =====================================
+# NOTES SPÉCIALES
+# =====================================
+
+# TA-Lib: Remplacé par des équivalents pandas/numpy pour compatibilité
+# Plus besoin d'installation manuelle complexe sur Windows
+
+# Pour optimisation maximale, installer aussi:
+# - numba (compilation JIT pour calculs rapides)
+# - cython (extensions C pour performance)
+
+# Pour développement interactif:
+# jupyter>=1.0.0
+# ipython>=8.0.0
