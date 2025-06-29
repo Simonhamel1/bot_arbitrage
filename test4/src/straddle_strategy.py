@@ -85,6 +85,12 @@ class AdvancedStraddleStrategy:
         contracts = max(1, min(contracts, 10))  # Entre 1 et 10 contrats
         
         return contracts
+    
+    def generate_signals(self, df):
+        """
+        Génère des signaux de trading basés sur la volatilité
+        
+        Returns:
             DataFrame avec signaux ajoutés
         """
         signals = df.copy()

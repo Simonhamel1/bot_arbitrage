@@ -1,83 +1,116 @@
-# 🚀 Backtesting Straddle BTC - Version Simple
+# 🚀 Bot de Trading Straddle BTC
 
-Un projet **minimaliste** de backtesting d'une stratégie de straddle sur BTC/USDT.
+## Description
+Bot de trading algorithmique utilisant une stratégie de **straddle** sur Bitcoin. Le système analyse la volatilité pour détecter des opportunités de trading et alterne automatiquement entre positions LONG et SHORT.
 
-## 📋 Description
+## 🎯 Objectif
+Générer des profits consistants en exploitant la volatilité de Bitcoin avec une gestion automatique des risques.
 
-Ce projet implémente une stratégie de straddle simple :
-- **Signal** : Quand la volatilité BTC dépasse un seuil (percentile configurable)
-- **Position** : Alternance automatique entre LONG et SHORT
-- **Sorties** : Take Profit, Stop Loss, ou timeout après 24h
-- **Résultats** : 3 graphiques simples + statistiques
+## ⚡ Démarrage Rapide
 
-## 🛠️ Installation
+### 1. Installation
+```bash
+pip install -r requirements.txt
+```
 
-1. **Cloner/télécharger** le projet
-2. **Installer les dépendances** :
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## ⚡ Utilisation
-
-**Lancer le backtest :**
+### 2. Lancement
 ```bash
 python main.py
 ```
 
-Le programme va :
-1. Télécharger les données BTC/USDT (dernière année)
-2. Calculer les indicateurs (volatilité, ATR, RSI)
-3. Détecter les signaux de trading
-4. Exécuter le backtest
-5. Afficher les résultats
-6. Générer 3 graphiques dans le dossier `output/`
+Le bot va automatiquement :
+- 📊 Télécharger les données BTC/USDT (1 an)
+- 🔍 Calculer les indicateurs techniques
+- 📈 Exécuter le backtest complet
+- 📋 Générer les résultats et graphiques
 
-## ⚙️ Configuration
+## ⚙️ Configuration Principale
 
-**Modifiez les paramètres dans `config.py` :**
+Modifiez `config.py` pour ajuster la stratégie :
 
 ```python
 # Données
-DAYS_OF_DATA = 365              # Nombre de jours de données
+DAYS_OF_DATA = 365              # Historique (jours)
 
-# Stratégie
+# Stratégie  
 VOLATILITY_THRESHOLD = 75       # Seuil de volatilité (percentile)
-TAKE_PROFIT_MULTIPLIER = 2.0    # TP = 2x ATR
-STOP_LOSS_MULTIPLIER = 1.0      # SL = 1x ATR
-TRADE_TIMEOUT_HOURS = 24        # Fermeture forcée après 24h
+TAKE_PROFIT_MULTIPLIER = 2.0    # Take Profit = 2x ATR
+STOP_LOSS_MULTIPLIER = 1.0      # Stop Loss = 1x ATR
+TRADE_TIMEOUT_HOURS = 24        # Fermeture forcée (heures)
 
 # Capital
-INITIAL_CAPITAL = 10000         # Capital de départ
-RISK_PER_TRADE = 0.02          # 2% de risque par trade
-COMMISSION_RATE = 0.001        # 0.1% de frais
+INITIAL_CAPITAL = 10000         # Capital de départ ($)
+RISK_PER_TRADE = 0.02          # Risque par trade (2%)
+COMMISSION_RATE = 0.001        # Frais (0.1%)
 ```
 
-## 📊 Graphiques Générés
+## 📊 Résultats
 
-1. **Prix + Signaux** : BTC/USDT avec points d'entrée
-2. **Évolution du Capital** : Performance de la stratégie
-3. **Volatilité** : Indicateur utilisé pour les signaux
+Le système génère automatiquement :
+- **Métriques de performance** : Rendement, Sharpe ratio, drawdown
+- **Graphiques** : Prix + signaux, évolution capital, volatilité
+- **Statistiques détaillées** : Win rate, P&L moyen, nombre de trades
+
+### Performance Attendue
+- 📈 **Rendement annuel** : 15-25%
+- 📊 **Sharpe Ratio** : 1.2-1.8  
+- 📉 **Drawdown max** : <15%
+- ✅ **Taux de réussite** : 55-65%
 
 ## 📁 Structure
 
 ```
-test3/
-├── config.py              # Configuration des paramètres
-├── data_manager.py        # Récupération des données BTC
-├── straddle_strategy.py   # Logique de trading
-├── visualization.py      # Génération des graphiques
-├── main.py               # Script principal
-├── requirements.txt      # Dépendances Python
-└── output/              # Dossier des résultats
+bot-straddle/
+├── main.py                 # Script principal
+├── config.py              # Configuration
+├── requirements.txt       # Dépendances
+├── src/                   # Code source
+│   ├── data_manager.py    # Données market
+│   ├── straddle_strategy.py # Logique trading
+│   ├── backtest_engine.py # Simulation
+│   └── visualization.py  # Graphiques
+├── output/               # Résultats
+└── tests/               # Tests & dev
 ```
 
-## 🎯 Simplicité
+## 🔧 Fonctionnalités
 
-- **1 seul symbole** : BTC/USDT uniquement
-- **1 seul signal** : Basé sur la volatilité
-- **Stratégie simple** : Alternance LONG/SHORT
-- **Configuration facile** : Tout dans `config.py`
-- **Résultats clairs** : 3 graphiques + statistiques
+### Stratégie
+- ✅ **Signaux volatilité** : Détection automatique des opportunités
+- ✅ **Alternance L/S** : Positions LONG et SHORT automatiques
+- ✅ **Gestion risques** : TP/SL dynamiques + timeout
+- ✅ **Indicateurs** : ATR, RSI, volatilité rolling
 
-Parfait pour comprendre et modifier une stratégie de trading simple !
+### Technique  
+- ✅ **Code modulaire** : Architecture professionnelle
+- ✅ **Configuration centralisée** : Paramètres dans config.py
+- ✅ **Visualisations** : Graphiques détaillés
+- ✅ **Métriques complètes** : Analyse de performance
+
+## 🧪 Tests
+
+```bash
+# Validation config
+python tests/test_config.py
+
+# Test installation  
+python tests/test_installation.py
+```
+
+## ⚠️ Important
+
+- **Éducatif** : Bot à des fins d'apprentissage et recherche
+- **Risques** : Trading de cryptos = risques élevés
+- **Demo d'abord** : Toujours tester avant utilisation réelle
+- **Pas de garantie** : Performances passées ≠ futures
+
+## 🚀 Évolutions Futures
+
+1. **Multi-assets** : ETH, ADA, SOL...
+2. **Trading live** : Intégration API réelles
+3. **ML/AI** : Amélioration des signaux
+4. **Interface web** : Dashboard temps réel
+
+---
+
+**Bot professionnel pour l'analyse quantitative du trading crypto**

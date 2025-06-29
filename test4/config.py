@@ -11,22 +11,22 @@ END_DATE = '2024-12-31'        # Fin 2024
 USE_DATE_RANGE = True          # Utiliser les dates spécifiées
 DAYS_OF_DATA = 365             # Fallback si USE_DATE_RANGE = False
 
-# Paramètres de stratégie ULTRA-OPTIMISÉS pour rentabilité maximale
-VOLATILITY_THRESHOLD = 55       # Seuil encore plus bas = plus d'opportunités (optimisé)
-TAKE_PROFIT_MULTIPLIER = 1.3    # TP plus agressif = saisir gains rapidement
-STOP_LOSS_MULTIPLIER = 0.6      # SL très serré = limiter pertes drastiquement
-TRADE_TIMEOUT_HOURS = 36        # Temps optimal pour développement
+# Paramètres de stratégie OPTIMISÉS pour rentabilité
+VOLATILITY_THRESHOLD = 75       # Seuil plus élevé = signaux de meilleure qualité  
+TAKE_PROFIT_MULTIPLIER = 2.0    # TP 2x ATR = laisser courir les gains
+STOP_LOSS_MULTIPLIER = 1.0      # SL 1x ATR = protection équilibrée
+TRADE_TIMEOUT_HOURS = 24        # 24h = temps optimal
 
-# Capital et risque ULTRA-OPTIMISÉS
+# Capital et risque CONSERVATEURS
 INITIAL_CAPITAL = 10000         # Capital de base
-RISK_PER_TRADE = 0.012         # 1.2% par trade (encore plus conservateur)
+RISK_PER_TRADE = 0.02          # 2% par trade (plus sécurisé)
 COMMISSION_RATE = 0.001        # Commission binance 0.1%
-MAX_DAILY_LOSS = 0.05          # Perte max quotidienne 5%
+MAX_DAILY_LOSS = 0.03          # Perte max quotidienne 3%
 
 # Paramètres backtest ULTRA-OPTIMISÉS
-BACKTEST_START_DATE = '2023-03-01'  # Début mars 2023 (période explosive)
+BACKTEST_START_DATE = '2014-03-01'  # Début mars 2014 (période explosive)
 BACKTEST_END_DATE = '2024-11-30'    # Fin novembre 2024
-MAX_POSITIONS = 3                   # Max 3 positions pour diversification
+MAX_POSITIONS = 10                   # Max 3 positions pour diversification
 MAX_SPREAD = 0.002                  # Spread max 0.2% (plus strict)
 MIN_PRICE_MOVEMENT = 0.00005        # Mouvement minimum très fin
 RISK_FREE_RATE = 0.02              # Taux sans risque 2%

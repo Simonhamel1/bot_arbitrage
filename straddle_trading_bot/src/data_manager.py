@@ -9,7 +9,7 @@ import logging
 from datetime import datetime, timedelta
 from typing import Optional, Tuple
 
-from config import *
+from .config import *
 
 class DataManager:
     """

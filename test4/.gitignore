@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project outputs
+output/*.png
+output/*.txt
+output/*.csv
+logs/*.log
+*.tmp
+*.bak
+
+# API Keys & Secrets
+config_prod.py
+secrets.py
+api_keys.txt
+credentials.json
+
+# Temporary
+temp/
+tmp/

@@ -1,0 +1,16 @@
+BOT DE TRADING STRADDLE - RAPPORT DE PERFORMANCE
+============================================================
+
+Date: 29/06/2025 11:43:34
+Configuration: AGGRESSIVE
+
+MÉTRIQUES PRINCIPALES:
+- Capital final: $10,000.00
+- Rendement: 0.00%
+- Trades: 0
+- Win rate: 0.0%
+- Profit factor: 0.00
+- Sharpe ratio: 0.00
+- Hedges: 0
+
+STATUT: NON RENTABLE

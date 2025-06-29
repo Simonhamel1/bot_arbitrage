@@ -115,6 +115,10 @@ pip install ccxt pandas numpy matplotlib seaborn scipy
 
 #### Option 1: Version Recommandée (Production)
 ```bash
+# Linux/Mac
+cd straddle_trading_bot && pip install -r requirements.txt && python main.py
+
+# Windows PowerShell
 cd straddle_trading_bot
 pip install -r requirements.txt
 python quick_test.py    # Validation
@@ -123,6 +127,10 @@ python main.py          # Lancement complet
 
 #### Option 2: Test d'Arbitrage
 ```bash
+# Linux/Mac
+cd test1 && pip install -r requirements.txt && python main.py demo 1000 BTC/USDT binance,coinbase
+
+# Windows PowerShell
 cd test1
 pip install -r requirements.txt
 python main.py demo 1000 BTC/USDT binance,coinbase
@@ -130,6 +138,10 @@ python main.py demo 1000 BTC/USDT binance,coinbase
 
 #### Option 3: Straddle Basique
 ```bash
+# Linux/Mac
+cd test2 && pip install -r requirements.txt && python main.py
+
+# Windows PowerShell
 cd test2
 pip install -r requirements.txt
 python main.py
@@ -266,6 +278,50 @@ pip install --upgrade pip ccxt pandas numpy
 # Ajuster profil de risque et seuils de volatilité
 ```
 
+**Erreurs d'Import Courantes**:
+
+```python
+# ❌ ModuleNotFoundError: No module named 'config'
+# Solution: Vérifier les imports relatifs dans src/
+# Les fichiers doivent utiliser: from .config import *
+
+# ❌ ImportError: cannot import name 'SYMBOL'
+# Solution: Vérifier que config.py est dans le bon dossier
+
+# ❌ ModuleNotFoundError: No module named 'ccxt'
+# Solution: pip install ccxt
+```
+
+**Réparation Rapide**:
+
+```bash
+# Réinstallation complète des dépendances
+cd straddle_trading_bot
+pip uninstall -y ccxt pandas numpy matplotlib seaborn
+pip install -r requirements.txt
+
+# Vérification de l'installation
+python quick_test.py
+```
+
+**Spécificités Windows PowerShell**:
+
+```powershell
+# Activer l'exécution de scripts si nécessaire
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Navigation sécurisée vers les dossiers
+Set-Location "c:\Users\X515\Desktop\All projects\bot_arbitrage\straddle_trading_bot"
+
+# Alternative si les chemins longs posent problème
+cd C:\Users\$env:USERNAME\Desktop\AllProjects\bot_arbitrage\straddle_trading_bot
+
+# Exécution étape par étape (recommandé sur Windows)
+pip install -r requirements.txt
+python quick_test.py
+python main.py
+```
+
 ## 🎯 Recommandations d'Utilisation
 
 ### Pour Débuter
@@ -319,6 +375,13 @@ Les contributions sont les bienvenues ! Chaque module peut être amélioré:
 - 🛡️ **Respecter la gestion** du risque configurée
 
 ## 📞 Support et Contact
+
+### Statut des Corrections Récentes
+
+✅ **CORRIGÉ** - Erreur `ModuleNotFoundError: No module named 'config'`  
+✅ **CORRIGÉ** - Imports relatifs dans le dossier `src/`  
+✅ **AJOUTÉ** - Section troubleshooting Windows PowerShell  
+✅ **AMÉLIORÉ** - Instructions d'installation multi-plateformes  
 
 ### Ressources
 

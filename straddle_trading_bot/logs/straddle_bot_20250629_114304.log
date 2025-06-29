@@ -1,0 +1,41 @@
+2025-06-29 11:43:04,629 - __main__ - INFO - 🔍 Validation de la configuration...
+2025-06-29 11:43:04,629 - __main__ - INFO - ✅ Configuration validée
+2025-06-29 11:43:04,634 - __main__ - INFO - 
+📊 PHASE 1: Récupération des données
+2025-06-29 11:43:04,650 - src.data_manager - INFO - ✅ Connexion binance initialisée
+2025-06-29 11:43:04,650 - src.data_manager - INFO - 📊 Récupération données BTC/USDT (1h)
+2025-06-29 11:43:04,654 - src.data_manager - INFO - 📅 Récupération période: 2023-01-01 → 2024-12-31
+2025-06-29 11:43:13,606 - src.data_manager - INFO - 📊 Calcul des indicateurs techniques
+2025-06-29 11:43:13,679 - src.data_manager - INFO - 🧹 271 barres supprimées lors du nettoyage
+2025-06-29 11:43:13,679 - src.data_manager - INFO - ✅ 17248 barres récupérées et traitées
+2025-06-29 11:43:13,679 - __main__ - INFO - ✅ Données récupérées: {'period': '2023-01-12 → 2024-12-30', 'total_bars': 17248, 'price_range': '$17,999 - $108,258', 'avg_volatility': '41.97%', 'avg_volume': '2,751', 'missing_data': np.int64(0), 'data_quality': 'Excellent'}
+2025-06-29 11:43:13,685 - src.data_manager - INFO - 📊 Récupération données BTC/USDT (1h)
+2025-06-29 11:43:13,688 - src.data_manager - INFO - 📅 Récupération période: 2023-01-01 → 2024-12-31
+2025-06-29 11:43:21,481 - src.data_manager - INFO - 📊 Calcul des indicateurs techniques
+2025-06-29 11:43:21,564 - src.data_manager - INFO - 🧹 271 barres supprimées lors du nettoyage
+2025-06-29 11:43:21,564 - src.data_manager - INFO - ✅ 17248 barres récupérées et traitées
+2025-06-29 11:43:21,568 - src.data_manager - INFO - 📊 Données backtest: 12432 barres (2023-06-01 → 2024-10-31)
+2025-06-29 11:43:21,568 - __main__ - INFO - 📊 Données backtest: 12432 barres
+2025-06-29 11:43:21,568 - __main__ - INFO - 
+🎯 PHASE 2: Exécution de la stratégie
+2025-06-29 11:43:21,571 - src.straddle_strategy - INFO - 🚀 Démarrage backtest stratégie straddle
+2025-06-29 11:43:21,571 - src.straddle_strategy - INFO - 💰 Capital initial: $10,000.00
+2025-06-29 11:43:21,571 - src.straddle_strategy - INFO - 🎯 Risque par trade: 1.2%
+2025-06-29 11:43:34,648 - src.straddle_strategy - INFO - ============================================================
+2025-06-29 11:43:34,648 - src.straddle_strategy - INFO - 🎯 RÉSULTATS DU BACKTEST
+2025-06-29 11:43:34,648 - src.straddle_strategy - INFO - ============================================================
+2025-06-29 11:43:34,661 - src.straddle_strategy - INFO - 📊 Trades exécutés: 0
+2025-06-29 11:43:34,662 - src.straddle_strategy - INFO - 💰 Capital final: $10,000.00
+2025-06-29 11:43:34,662 - src.straddle_strategy - INFO - 📈 Rendement total: 0.00%
+2025-06-29 11:43:34,662 - src.straddle_strategy - INFO - 🎯 Taux de réussite: 0.0%
+2025-06-29 11:43:34,663 - src.straddle_strategy - INFO - 📊 PnL moyen: 0.00%
+2025-06-29 11:43:34,663 - src.straddle_strategy - INFO - 🏆 Meilleur trade: 0.00%
+2025-06-29 11:43:34,663 - src.straddle_strategy - INFO - 💔 Pire trade: 0.00%
+2025-06-29 11:43:34,663 - src.straddle_strategy - INFO - ⚖️ Profit Factor: 0.00
+2025-06-29 11:43:34,664 - src.straddle_strategy - INFO - 📊 Sharpe Ratio: 0.00
+2025-06-29 11:43:34,664 - src.straddle_strategy - INFO - 🛡️ Hedges utilisés: 0
+2025-06-29 11:43:34,664 - src.straddle_strategy - INFO - ============================================================
+2025-06-29 11:43:34,665 - __main__ - INFO - 
+📈 PHASE 3: Analyse des résultats
+2025-06-29 11:43:34,665 - __main__ - INFO - 
+📋 PHASE 5: Rapport final
